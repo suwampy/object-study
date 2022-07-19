@@ -40,8 +40,23 @@ public class Screening {
 
     /**
      * 요금을 계산하는 메서드
-     *함*/
+     **/
     private Money calculateFee(int audienceCount) {
+        // Screening이 Movie의 내부 구현에 대한 어떤 지식도 없이 전송할 메시지를 결정했음
+        // Movie의 구현을 고려하지 않고, 필요한 메시지를 결정하면 Moive의 내부 구현을 깔끔하게 캡슐화 할 수 있음
+        // Screening과 Movie를 연결하는 유일한 연결 고리는 메시지 뿐
         return movie.calculateMovieFee(this).times(audienceCount);
     }
+
+    /**
+     * 상영 시간 정보
+     * */
+    public LocalDateTime getWhenScreened() {
+        return whenScreened;
+    }
+
+    public int getSequence() {
+        return sequence;
+    }
+
 }
