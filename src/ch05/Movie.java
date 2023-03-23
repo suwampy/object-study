@@ -25,7 +25,33 @@ public class Movie {
     }
 
     private boolean isDiscountable(Screening screening) {
-        return discountCOnditions.stream()
+        return discountConditions.stream()
                 .anyMatch(condition -> condition.isSatisfiedBy(screening));
+    }
+
+    private Money calculateDiscountAmount() {
+        // movietype의 값에 따라 적절한 메서드를 호출한다
+        switch(movieType) {
+            case AMOUNT_DISCOUNT:
+                return calculateAmountDiscountAmount();
+            case PERCENT_DISCOUNT:
+                return calculatePercentDiscountAmount();
+            case NONE_DISCOUNT:
+                return calculateNoneDiscountAmount();
+        }
+
+        throw new IllegalStateException();
+    }
+
+    private Money calculateAmountDiscountAmount() {
+        return discountAmount;
+    }
+
+    private MOney calculatePercentDiscountAmount() {
+        return fee.times(discountPercent);
+    }
+
+    private MOney calculateNoneDiscountAmount() {
+        return Money.ZERO;
     }
 }
