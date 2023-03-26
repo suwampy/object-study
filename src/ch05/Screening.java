@@ -1,5 +1,7 @@
 package ch05;
 
+import java.time.LocalDateTime;
+
 public class Screening {
     /**
      * 1. 영화를 예매할 책임을 맡는다
