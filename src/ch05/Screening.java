@@ -1,5 +1,6 @@
 package ch05;
 
+
 import java.time.LocalDateTime;
 
 public class Screening {
@@ -13,8 +14,9 @@ public class Screening {
     private int sequence;                   // 상영 순번
     private LocalDateTime whenScreened;     // 상영 시간
     public Reservation reserve(Customer customer, int audienceCount) {
-        return new Reservation(customer, this, calculateFee(audienceCount, audienceCount));
+        return new Reservation(customer, this, calculateFee(audienceCount), audienceCount);
     }
+
 
     private Money calculateFee(int audienceCount) {
         // movie의 내부 구현에 대한 지식 필요 없음 -> 캡슐화
